@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa Eletrónico</title>
+</head>
+
+<body>
+    <script>
+        let chance = 2
+        let valor = 500;
+        let saque = 0;
+        let senha = 0;
+        let option = 0;
+        let saldo_Total = valor;
+
+        const nome = prompt("Qual é seu nome: ");
+
+        alert("Olá " + nome + " é um prazer ter você por aqui");
+        senha = parseInt(prompt("Digite sua senha: "));
+
+        while (true) {
+            if (senha == 3589) {
+                alert("Seu saldo atual é de " + valor);
+
+                alert( nome + " qual operação deseja realizar?");
+                option = prompt("1)Saldo   2)Extrato  3)Depóstio  4)Saque   5)Transferência   6)Sair");
+                while (true) {
+                    switch (option) {
+                        case "1":
+                            alert("Saldo atual: R$" + saldo_Total);
+                            break
+                        case "2":
+                            alert("Seu saldo atual é de R$" + saldo_Total);
+                            alert("Movimentações: Transferência Rodolfo -R$600" + " Débito Master shop -R$200 " + " Recibo transfência +R$500");
+                            break
+                        case "3":
+                            valor = parseFloat(prompt("Qual o valor que o senhor deseja fazer o depósito?"));
+                            if(valor <= 0){
+                                while(true){
+                                    alert("Operação não autorizada");
+                                    alert("O valor depósito deve ser superior a 0");
+                                    valor = parseFloat(prompt("Qual o valor que o senhor deseja fazer o depósito?"));
+                                    if(valor > 0){
+                                        break
+                                    }
+                                }
+                            }
+                            saldo_Total += valor;
+                            alert("Saldo atual: R$" + saldo_Total);
+                            break
+                        case "4":
+                            saque = parseFloat(prompt("Qual valor o senhor deseja sacar?"));
+                            if (saque > saldo_Total || saque <= 0) {
+                                alert("Operação não autorizada");
+                                alert("Valor deve ser superior a 0 e menor que seu saldo, " + "seu saldo é de " + saldo_Total);
+                                while (true) {
+                                    saque = parseFloat(prompt("Qual valor o senhor deseja sacar?"));
+                                    if (saque <= saldo_Total && saque > 0) {
+                                        break
+                                    } else {
+                                        alert("Operação não autorizada");
+                                        alert("Valor deve ser superior a 0 e menor que o saldo, " + "seu saldo é de " + saldo_Total);
+                                    }
+                                }
+                                saldo_Total = saldo_Total - saque;
+                                alert("Saque no valor de R$" + saque + " Realizado com sucesso, " + "saldo restante no valor de R$" + saldo_Total);
+                            } else {
+                                saldo_Total = saldo_Total - saque;
+                                alert("Saque no valor de R$" + saque + " Realizado com sucesso, " + "saldo restante no valor de R$" + saldo_Total);
+                            }
+                            break
+                        case "5":
+                            let transferencia = prompt("O pix é CPF ou CNPJ?");
+                            let trans_valor = 0;
+                            switch (transferencia) {
+                                case "CPF":
+                                    prompt("Digite o CPF: ");
+                                    trans_valor = parseFloat(prompt("Digite o valor do Pix: "));
+                                    if (trans_valor > saldo_Total || trans_valor <= 0) {
+                                        alert("Operação não autorizada");
+                                        alert("Valor deve ser superior a 0 e menor que o saldo,," + " seu saldo é de " + saldo_Total);
+                                        while (true) {
+                                            trans_valor = parseFloat((prompt("Digite o valor do Pix: ")));
+                                            if (trans_valor <= saldo_Total && trans_valor >= 0) {
+                                                break
+                                            } else {
+                                                alert("Operação não autorizada");
+                                                alert("Valor deve ser superior a 0 e menor que o saldo,," + " seu saldo é de " + saldo_Total);
+                                            }
+                                        }
+                                        saldo_Total = saldo_Total - trans_valor;
+                                        alert("Transferência no valor de R$" + trans_valor + " realizada com sucesso," + " seu saldo atual é de R$" + saldo_Total);
+                                    } else {
+                                        saldo_Total = saldo_Total - trans_valor;
+                                        alert("Transferência no valor de R$" + trans_valor + " realizada com sucesso," + " seu saldo atual é de R$" + saldo_Total);
+                                    }
+                                    break
+                                case "CNPJ":
+                                    prompt("Digite o CNPJ: ");
+                                    trans_valor = parseFloat(prompt("Digite o valor do Pix: "));
+                                    if (trans_valor > saldo_Total || trans_valor <= 0) {
+                                        alert("Operação não autorizada");
+                                        alert("Valor deve ser superior a 0 e menor que o saldo,," + " seu saldo é de " + saldo_Total);
+                                        while (true) {
+                                            trans_valor = parseFloat((prompt("Digite o valor do Pix: ")));
+                                            if (trans_valor <= saldo_Total && trans_valor >= 0) {
+                                                break
+                                            } else {
+                                                alert("Operação não autorizada");
+                                                alert("Valor deve ser superior a 0 e menor que o saldo,," + " seu saldo é de " + saldo_Total);
+                                            }
+                                        }
+                                        saldo_Total = saldo_Total - trans_valor;
+                                        alert("Transferência no valor de R$" + trans_valor + " realizada com sucesso," + " seu saldo atual é de R$" + saldo_Total);
+                                    } else {
+                                        saldo_Total = saldo_Total - trans_valor;
+                                        alert("Transferência no valor de R$" + trans_valor + " realizada com sucesso," + " seu saldo atual é de R$" + saldo_Total);
+                                    }
+                                    break
+                            }
+                        case "6":
+                            alert("Tenha uma ótima tarde " + nome + " até uma próxma");
+                    }
+                    if (option == 6) {
+                        break
+                    } else {
+                        alert("Ajudo o senhor com algo mais?")
+                        option = prompt("1)Saldo   2)Extrato  3)Depóstio  4)Saque   5)Transferência  6)Sair");
+                        if (option == 6) {
+                            break
+                        }
+                    }
+                }
+            } else {
+                alert("Senha incorreta, você tem mais " + chance + " chances");
+                senha = parseInt(prompt("Digite sua senha: "));
+                chance -= 1
+                if (chance <= 0) {
+                    alert("Conta bloqueada, se direcione até uma agência e converse com o gerente geral");
+                    break
+                }
+            }
+            if (option == 6) {
+                break
+            }
+        }
+    </script>
+</body>
+
+</html>
